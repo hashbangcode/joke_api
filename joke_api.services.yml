@@ -1,0 +1,4 @@
+services:
+  joke_api.joke:
+    class: Drupal\joke_api\JokeApi
+    arguments: ['@http_client']

@@ -1,0 +1,7 @@
+get_joke:
+  path: '/get-joke'
+  defaults:
+    _form: '\Drupal\joke_api\Form\GetJokeForm'
+    _title: 'Get Joke'
+  requirements:
+    _access: 'TRUE'
