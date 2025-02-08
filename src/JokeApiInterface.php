@@ -2,6 +2,9 @@
 
 namespace Drupal\joke_api;
 
+/**
+ * Interface for the JokeApi service.
+ */
 interface JokeApiInterface {
 
   /**
@@ -9,11 +12,12 @@ interface JokeApiInterface {
    *
    * @param array $options
    *   The options for the Joke API.
-   * @param string $category
-   *   The category, defaults to 'any'.
+   * @param array $categories
+   *   The category, defaults to ['any'].
    *
-   * @return object|boolean
+   * @return object|bool
    *   The joke.
    */
-  public function getJoke($options = [], $category = 'any');
+  public function getJoke(array $options = [], array $categories = ['Any']);
+
 }

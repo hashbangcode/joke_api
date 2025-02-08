@@ -4,4 +4,5 @@ get_joke:
     _form: '\Drupal\joke_api\Form\GetJokeForm'
     _title: 'Get Joke'
   requirements:
+    # This page is available to all users.
     _access: 'TRUE'

@@ -1,0 +1,6 @@
+get_joke:
+  title: 'Joke'
+  parent: system.admin
+  description: 'Get A Joke'
+  route_name: get_joke
+  weight: 1

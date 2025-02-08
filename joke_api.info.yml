@@ -1,4 +1,4 @@
 name: 'Joke API'
 type: module
 description: 'Wraps the Joke API.'
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^10 || ^11

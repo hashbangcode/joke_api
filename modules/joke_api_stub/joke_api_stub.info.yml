@@ -1,6 +1,6 @@
 name: 'Joke API Stub'
 type: module
 description: 'Stubs the Joke API module.'
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^10 || ^11
 dependencies:
-  - joke_api
+  - joke_api:joke_api

@@ -2,16 +2,17 @@
 
 namespace Drupal\joke_api_stub;
 
-use GuzzleHttp\Client;
 use Drupal\joke_api\JokeApi;
 
+/**
+ * Stub class for the JokeApi.
+ */
 class JokeApiStub extends JokeApi {
 
   /**
    * {@inheritdoc}
    */
   public function getJoke($options = [], $category = 'any') {
-
     $data = '{
     "error": false,
     "category": "Programming",
@@ -33,4 +34,5 @@ class JokeApiStub extends JokeApi {
 
     return json_decode($data);
   }
+
 }
