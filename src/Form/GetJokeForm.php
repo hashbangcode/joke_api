@@ -4,7 +4,6 @@ namespace Drupal\joke_api\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\joke_api\JokeApiInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -27,22 +26,12 @@ class GetJokeForm extends FormBase {
   protected $jokeApi;
 
   /**
-   * GetJokeForm constructor.
-   *
-   * @param \Drupal\joke_api\JokeApiInterface $joke_api
-   *   The get joke API service.
-   */
-  public function __construct(JokeApiInterface $joke_api) {
-    $this->jokeApi = $joke_api;
-  }
-
-  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('joke_api.joke')
-    );
+    $instance = new static();
+    $instance->jokeApi = $container->get('joke_api.joke');
+    return $instance;
   }
 
   /**
