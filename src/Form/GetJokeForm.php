@@ -47,7 +47,12 @@ class GetJokeForm extends FormBase {
     }
     $jokeMeta = $form_state->getValue('joke_meta');
     if ($jokeMeta) {
-      $form['joke_meta'] = $jokeMeta;
+      $form['joke_meta'] = [
+        '#type' => 'details',
+        '#title' => $this->t('Joke Metadata'),
+        '#open' => FALSE,
+      ];
+      $form['joke_meta']['content'] = $jokeMeta;
     }
 
     $form['contains'] = [
@@ -93,7 +98,6 @@ class GetJokeForm extends FormBase {
 
     $jokeMeta['output'] = [
       '#theme' => 'item_list',
-      '#title' => $this->t('Joke Metadata'),
       '#items' => [
         'error: ' . ($joke->error ? 'true' : 'false'),
         'category: ' . $joke->category,
