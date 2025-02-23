@@ -4,6 +4,7 @@ namespace Drupal\joke_api;
 
 use Drupal\Component\Utility\UrlHelper;
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 
 /**
  * Integrates with the JokeAPI.
@@ -28,20 +29,12 @@ class JokeApi implements JokeApiInterface {
   ];
 
   /**
-   * Guzzle\Client instance.
-   *
-   * @var \GuzzleHttp\Client
-   */
-  protected $httpClient;
-
-  /**
    * JokeApi constructor.
    *
-   * @param \GuzzleHttp\Client $http_client
+   * @param \GuzzleHttp\ClientInterface $httpClient
    *   The http client.
    */
-  public function __construct(Client $http_client) {
-    $this->httpClient = $http_client;
+  public function __construct(protected ClientInterface $httpClient) {
   }
 
   /**
@@ -70,8 +63,7 @@ class JokeApi implements JokeApiInterface {
       return FALSE;
     }
 
-    $data = json_decode($request->getBody()->getContents());
-    return $data;
+    return json_decode($request->getBody()->getContents());
   }
 
 }

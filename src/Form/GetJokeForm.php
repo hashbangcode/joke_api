@@ -72,6 +72,8 @@ class GetJokeForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    $form_state->setRebuild(TRUE);
+
     // Force safe mode.
     $options = [
       'safe-mode' => NULL,
@@ -87,7 +89,8 @@ class GetJokeForm extends FormBase {
 
     // React to the response.
     if ($joke === FALSE || $joke->error == 'true') {
-      $jokeString = 'Could not get joke.';
+      $form_state->setValue('joke', 'Error! Could not get joke.');
+      return;
     }
     elseif ($joke->type == 'single') {
       $jokeString = $joke->joke;
@@ -121,7 +124,6 @@ class GetJokeForm extends FormBase {
 
     $form_state->setValue('joke', $jokeString);
     $form_state->setValue('joke_meta', $jokeMeta);
-    $form_state->setRebuild(TRUE);
   }
 
 }
